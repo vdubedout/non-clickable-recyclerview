@@ -13,7 +13,7 @@ import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity {
     @BindView(R.id.activity_main_list_container) ViewGroup listContainerView;
-    @BindView(R.id.activity_main_list) RecyclerView listView;
+    @BindView(R.id.activity_main_list) RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,12 +22,16 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         TestAdapter adapter = new TestAdapter();
-        listView.setAdapter(adapter);
-        listView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter.initializeTestItems();
 
-
         listContainerView.setOnClickListener(view -> Toast.makeText(this, "container clicked", Toast.LENGTH_SHORT).show());
+
+
+        // Test focusable -> NOT WORKING
+        recyclerView.setClickable(false);
+        recyclerView.setFocusable(false);
     }
 
 }
