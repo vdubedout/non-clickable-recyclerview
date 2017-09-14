@@ -20,5 +20,9 @@ class TestEpoxyModel extends EpoxyModel<LinearLayout> {
     public void bind(LinearLayout view) {
         super.bind(view);
         view.setBackgroundColor(color);
+
+        // Test 2 remove focusable on lower items
+        view.setFocusable(false);
+        view.setClickable(false);
     }
 }
